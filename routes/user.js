@@ -19,13 +19,11 @@ router.get(
 
 router.get(
   "/login",
-  passport.authenticate("google", {
-    successRedirect: process.env.FRONTEND_URL,
-  })
+  passport.authenticate("google"),
 
-  // (req, res, next) => {
-  //   res.send("Logged In");
-  // }
+  (req, res, next) => {
+    res.send("Logged In");
+  }
 );
 
 router.get("/me", isAuthenticated, myProfile);
